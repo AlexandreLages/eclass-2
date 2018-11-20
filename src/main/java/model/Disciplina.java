@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
@@ -53,6 +54,7 @@ public class Disciplina implements Serializable {
 	
 	
 	@ManyToMany
+	@JoinTable(name="disciplinas_alunos", joinColumns= {@JoinColumn(name="disciplina_id")}, inverseJoinColumns= {@JoinColumn(name="aluno_id")})
 	private List<Aluno> alunos = new ArrayList<>();
 
 

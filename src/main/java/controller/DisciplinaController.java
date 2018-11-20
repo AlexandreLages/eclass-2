@@ -80,8 +80,8 @@ public class DisciplinaController {
 			result.include("error", "Você não tem permissão para acessar esse recurso");
 			result.redirectTo(UsuarioController.class).login();
 		}
-		ArrayList<Disciplina> listaDisciplinas = (ArrayList<Disciplina>) disciplinas.listarDisciplinasPorProfessor(id);
-		result.include("disciplinas", listaDisciplinas);
+		Aluno aluno = (Aluno) usuarioDAO.pesquisarUsuarioPorId(id);
+		result.include("disciplinas", aluno.getDisciplinas());
 	}
 	
 	
@@ -114,6 +114,18 @@ public class DisciplinaController {
 	@Get("/disciplina/professor/detalha/{id}")
 	public void detalhaDisciplinaProfessor(long id) {
 		if((usuarioLogado.getUsuario() instanceof Professor) == false) {
+			result.include("error", "Você não tem permissão para acessar esse recurso");
+			result.redirectTo(UsuarioController.class).login();
+		}
+		Disciplina disciplina = disciplinas.pesquisarDisciplinaPorId(id);
+		result.include("disciplina", disciplina);
+	}
+	
+	
+	@Permission
+	@Get("/disciplina/aluno/detalha/{id}")
+	public void detalhaDisciplinaAluno(long id) {
+		if((usuarioLogado.getUsuario() instanceof Aluno) == false) {
 			result.include("error", "Você não tem permissão para acessar esse recurso");
 			result.redirectTo(UsuarioController.class).login();
 		}

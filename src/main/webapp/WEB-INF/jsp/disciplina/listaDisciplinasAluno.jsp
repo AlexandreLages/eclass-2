@@ -33,7 +33,7 @@
 				<div class="col-md-4">
 					<ul class="list-group">
   						<li class="list-group-item">
-  							<a href="<c:url value="/disciplina/lista/aluno/${usuarioLogado.usuario.id}"/>"><i class="fas fa-book"></i> Disciplinas</a>
+  							<a href=""><i class="fas fa-book"></i> Disciplinas</a>
   						</li>
   						<li class="list-group-item">
   							<a href=""><i class="fas fa-user"></i> Meu Perfil</a>
@@ -44,9 +44,16 @@
 					</ul>
 				</div>
 				<div class="col-md-8">
-					<div class="jumbotron">
-						<h2>${usuarioLogado.nome},</h2>
-						<p>Bem-vindo ao E-Class, esse é um projeto que procura aliar gamificação à educação com objetivo de melhorar o desempenho de alunos da educação básica.</p>
+					<div class="card">
+						<div class="card-header">
+							Disicplinas
+						</div>
+						<div class="card-body">
+							<c:forEach items="${disciplinas}" var="disciplina">
+								<a href="<c:url value="/disciplina/aluno/detalha/${disciplina.id}"/>">${disciplina.nome} - ${disciplina.serie} ${disciplina.turma} ${disciplina.turno} - ${disciplina.escola}</a>
+								<hr>
+							</c:forEach>
+						</div>
 					</div>
 				</div>
 			</div>

@@ -33,7 +33,7 @@
 				<div class="col-md-4">
 					<ul class="list-group">
   						<li class="list-group-item">
-  							<a href="<c:url value="/disciplina/lista/aluno/${usuarioLogado.usuario.id}"/>"><i class="fas fa-book"></i> Disciplinas</a>
+  							<a href="<c:url value="/disciplina/lista/professor/${usuarioLogado.usuario.id}"/>"><i class="fas fa-book"></i> Disciplinas</a>
   						</li>
   						<li class="list-group-item">
   							<a href=""><i class="fas fa-user"></i> Meu Perfil</a>
@@ -44,9 +44,39 @@
 					</ul>
 				</div>
 				<div class="col-md-8">
-					<div class="jumbotron">
-						<h2>${usuarioLogado.nome},</h2>
-						<p>Bem-vindo ao E-Class, esse é um projeto que procura aliar gamificação à educação com objetivo de melhorar o desempenho de alunos da educação básica.</p>
+					<div class="card">
+						<div class="card-header">
+							${disciplina.nome}
+						</div>
+						<div class="card-body">
+							${disciplina.serie} Turma ${disciplina.turma} Turno ${disciplina.turno}
+						</div>
+					</div>
+					<br>
+					<div class="row">
+						<div class="col-md-12">
+							<div class="card center margin-eclass">
+		  						<div class="card-body">
+		    						<img width="30%" class="rounded-circle" src="<c:url value="/static/user-img.jpg"/>"></img>
+		    						<h5 class="card-title">${disciplina.professor.nome}</h5>
+		    						<h6 class="card-subtitle">${disciplina.professor.email}</h6>
+		  						</div>
+	  						</div>
+						</div>
+						<c:forEach items="${alunos}" var="aluno" varStatus="item">
+							<div class="col-md-6">
+								<div class="card center">
+		  							<div class="card-body">
+		    							<img width="30%" class="rounded-circle" src="<c:url value="/static/user-img.jpg"/>"></img>
+		    							<h5 class="card-title">${aluno.nome}</h5>
+		    							<h6 class="card-subtitle">${aluno.email}</h6>
+		  							</div>
+	  							</div>
+	  							<c:if test="${item.index mod 2 == 0}">
+	  								<br>
+	  							</c:if>
+							</div>
+						</c:forEach>
 					</div>
 				</div>
 			</div>

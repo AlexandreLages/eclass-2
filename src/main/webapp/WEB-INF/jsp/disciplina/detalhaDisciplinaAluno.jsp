@@ -33,7 +33,7 @@
 				<div class="col-md-4">
 					<ul class="list-group">
   						<li class="list-group-item">
-  							<a href="<c:url value="/disciplina/lista/aluno/${usuarioLogado.usuario.id}"/>"><i class="fas fa-book"></i> Disciplinas</a>
+  							<a href=""><i class="fas fa-book"></i> Disciplinas</a>
   						</li>
   						<li class="list-group-item">
   							<a href=""><i class="fas fa-user"></i> Meu Perfil</a>
@@ -44,9 +44,59 @@
 					</ul>
 				</div>
 				<div class="col-md-8">
-					<div class="jumbotron">
-						<h2>${usuarioLogado.nome},</h2>
-						<p>Bem-vindo ao E-Class, esse é um projeto que procura aliar gamificação à educação com objetivo de melhorar o desempenho de alunos da educação básica.</p>
+					<div class="card">
+						<div class="card-header">
+							Matemática
+						</div>
+						<div class="card-body">
+							${disciplina.serie} Turma ${disciplina.turma} Turno ${disciplina.turno} 2018.
+						</div>
+					</div>
+					<br>
+					<div class="row">
+						<div class="col-md-4"> 
+							<div class="card center">
+		  						<div class="card-body">
+		    						<h5 class="card-title">Alunos</h5>
+		    						<a href="<c:url value="/aluno/lista/${disciplina.id}"/>"><i class="fas fa-users fa-5x font-primary"></i></a>
+		  						</div>
+	  						</div>
+						</div>
+						<div class="col-md-4">
+							<div class="card center">
+		  						<div class="card-body">
+		    						<h5 class="card-title">Ranking</h5>
+		    						<i class="fas fa-trophy fa-5x font-primary"></i>
+		  						</div>
+	  						</div>
+						</div>
+						<div class="col-md-4">
+							<div class="card center">
+		  						<div class="card-body">
+		    						<h5 class="card-title">Notas</h5>
+		    						<i class="fas fa-chart-line fa-5x font-primary"></i>
+		  						</div>
+	  						</div>
+						</div>
+					</div>
+					<br>
+					<div class="row">
+						<div class="col-md-4">
+							<div class="card center">
+		  						<div class="card-body">
+		    						<h5 class="card-title">Frequência</h5>
+		    						<i class="fas fa-clipboard-list fa-5x font-primary"></i>
+		  						</div>
+	  						</div>
+						</div>
+						<div class="col-md-4">
+							<div class="card center">
+		  						<div class="card-body">
+		    						<h5 class="card-title">Configurações</h5>
+		    						<i class="fas fa-cog fa-5x font-primary"></i>
+		  						</div>
+	  						</div>
+						</div>
 					</div>
 				</div>
 			</div>
