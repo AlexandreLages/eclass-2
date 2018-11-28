@@ -29,31 +29,36 @@
 			</div>
 		</div>
 		<div class="container">
-			<div class="row justify-content-md-center">
-				<div class="col-md-6">
-					<div class="card">
-						<div class="card-header">
-							<i class="fas fa-users"></i> Acessar o Sistema
+			<div class="card">
+				<div class="card-header">
+					<i class="fas fa-child"></i> Cadastro de Pai ou Responsável
+				</div>
+				<div class="card-body">
+					<form action="<c:url value="/pai/cadastrar"/>" method="post">
+						<div class="form-group col-md-12">
+  							<label for="nome">Nome</label>
+  							<input type="text" class="form-control" id="nome" name="pai.nome" placeholder="Seu Nome" required>
 						</div>
-						<div class="card-body">
-							<form action="<c:url value="/usuario/login"/>" method="post">
-								<div class="form-group col-md-12">
-  									<label for="email">Email</label>
-  									<input type="email" class="form-control" id="email" name="email" placeholder="Email" required>
-								</div>
-								<div class="form-group col-md-12">
-  									<label for="senha">Senha</label>
-  									<input type="password" class="form-control" id="senha" name="senha" placeholder="Senha" required>
-								</div>
-								<div class="form-group col-md-12">
-									<button type="submit" class="btn btn-primary btn-block">Acessar Sistema</button>
-								</div>
-							</form>
-							<div class="form-group col-md-12">
-								<a href="<c:url value="/usuario/pai/login"/>"><button class="btn btn-success btn-block">Pais ou Responsáveis</button></a>
-							</div>
+						<div class="form-group col-md-12">
+  							<label for="usuario">Usuário</label>
+  							<input type="text" class="form-control" id="usuario" name="pai.usuario" placeholder="Usuário" required>
 						</div>
-					</div>
+						<div class="form-group col-md-12">
+  							<label for="email">CPF</label>
+  							<input type="text" class="form-control" id="email" name="pai.email" placeholder="Seu CPF" required>
+						</div>
+						<div class="form-group col-md-12">
+  							<label for="senha">Senha</label>
+  							<input type="password" class="form-control" id="senha" name="pai.senha" placeholder="Sua Senha" required>
+						</div>
+						<div class="form-group col-md-12">
+  							<label for="confirmar_senha">Confirmar Senha</label>
+  							<input type="password" class="form-control" id="confirmar_senha" name="confirmarSenha" placeholder="Sua Senha" required>
+						</div>
+						<div class="form-group col-md-12">
+							<button type="submit" class="btn btn-primary btn-block">Cadastrar</button>
+						</div>
+					</form>
 				</div>
 			</div>
 		</div>

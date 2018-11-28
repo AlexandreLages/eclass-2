@@ -12,6 +12,7 @@ import dao.DisciplinaDAO;
 import dao.UsuarioDAO;
 import model.Aluno;
 import model.Disciplina;
+import model.Pai;
 import model.Professor;
 import session.UsuarioLogado;
 
@@ -96,5 +97,17 @@ public class AlunoController {
 		Disciplina disciplina = disciplinaDAO.pesquisarDisciplinaPorId(id);
 		result.include("disciplina", disciplina);
 		result.include("alunos", disciplina.getAlunos());
+	}
+	
+	
+	@Permission
+	@Get("/aluno/lista/pai/{id}")
+	public void listarAlunosPai(long id) {
+		if((usuarioLogado.getUsuario() instanceof Pai) == false) {
+			result.include("error", "Você não tem permissão para acessar esse recurso");
+			result.redirectTo(UsuarioController.class).login();
+		}
+		Pai pai = (Pai) usuarios.pesquisarUsuarioPorId(id);
+		result.include("filhos", pai.getFilhos());
 	}
 }

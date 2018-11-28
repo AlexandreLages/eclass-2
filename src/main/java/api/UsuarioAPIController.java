@@ -49,4 +49,16 @@ public class UsuarioAPIController {
 			}
 		}
 	}
+	
+	
+	@Public
+	@Post("/usuario/responsavel/api/login")
+	@Consumes({"application/json", "application/xml"})
+	public void login(String cpf) {
+		Usuario usuario = usuarios.pesquisarUsuarioPorEmail(cpf);
+		if(usuario != null) {
+			usuarioLogado.login(usuario);
+			result.use(Results.json()).withoutRoot().from(usuario).exclude("senha").serialize();
+		}
+	}
 }

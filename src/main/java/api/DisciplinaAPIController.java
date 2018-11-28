@@ -77,6 +77,22 @@ public class DisciplinaAPIController {
 	@Consumes({"application/json", "application/xml"})
 	public void detalhaDisciplinaAluno(long id) {
 		Disciplina disciplina = disciplinas.pesquisarDisciplinaPorId(id);
-		result.use(Results.json()).withoutRoot().from(disciplina).recursive().serialize();
+		result.use(Results.json()).withoutRoot().from(disciplina).serialize();
+	}
+	
+	
+	@Public
+	@Get("/disciplina/api/lista/filho/{id}")
+	public void listaDisciplinasFilho(long id) {
+		Aluno aluno = (Aluno) usuarioDAO.pesquisarUsuarioPorId(id);
+		result.include("disciplinas", aluno.getDisciplinas());
+	}
+	
+	
+	@Public
+	@Get("/disciplina/api/pai/detalha/{id}")
+	public void detalhaDisciplinaFilho(long id) {
+		Disciplina disciplina = disciplinas.pesquisarDisciplinaPorId(id);
+		result.include("disciplina", disciplina);
 	}
 }

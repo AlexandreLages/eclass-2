@@ -34,7 +34,7 @@
 					<h2>E-Class</h2>
 					<p>Bem-vindo ao E-Class, esse é um projeto que procura aliar gamificação à educação com objetivo de melhorar o desempenho de alunos da educação básica.</p>
 				</div>
-				<div class="col-md-4">
+				<div class="col-md-3">
 					<div class="card center">
   						<div class="card-body">
     						<h5 class="card-title">Cadastro de Professor</h5>
@@ -44,7 +44,7 @@
   						</div>
 					</div>
 				</div>
-				<div class="col-md-4">
+				<div class="col-md-3">
 					<div class="card center">
   						<div class="card-body">
     						<h5 class="card-title">Cadastro de Aluno</h5>
@@ -54,7 +54,17 @@
   						</div>
 					</div>
 				</div>
-				<div class="col-md-4">
+				<div class="col-md-3">
+					<div class="card center">
+  						<div class="card-body">
+    						<h5 class="card-title">Cadastro de Responsável</h5>
+    						<i class="fas fa-child fa-5x font-primary"></i>
+    						<br><br>
+    						<a href="<c:url value="/pai/cadastrar"/>" class="btn btn-primary btn-block">Cadastrar Responsável</a>
+  						</div>
+					</div>
+				</div>
+				<div class="col-md-3">
 					<div class="card center">
   						<div class="card-body">
     						<h5 class="card-title">Acessar Sistema</h5>

@@ -14,6 +14,7 @@ import dao.DisciplinaDAO;
 import dao.UsuarioDAO;
 import model.Aluno;
 import model.Disciplina;
+import model.Pai;
 import model.Professor;
 import session.UsuarioLogado;
 
@@ -86,6 +87,18 @@ public class DisciplinaController {
 	
 	
 	@Permission
+	@Get("/disciplina/lista/filho/{id}")
+	public void listaDisciplinasFilho(long id) {
+		if(usuarioLogado.getUsuario() instanceof Pai == false) {
+			result.include("error", "Você não tem permissão para acessar esse recurso");
+			result.redirectTo(UsuarioController.class).login();
+		}
+		Aluno aluno = (Aluno) usuarioDAO.pesquisarUsuarioPorId(id);
+		result.include("disciplinas", aluno.getDisciplinas());
+	}
+	
+	
+	@Permission
 	@Get("/disciplina/relacionar/{id}")
 	public void relacionarAluno(long id) {
 		if((usuarioLogado.getUsuario() instanceof Professor) == false) {
@@ -126,6 +139,18 @@ public class DisciplinaController {
 	@Get("/disciplina/aluno/detalha/{id}")
 	public void detalhaDisciplinaAluno(long id) {
 		if((usuarioLogado.getUsuario() instanceof Aluno) == false) {
+			result.include("error", "Você não tem permissão para acessar esse recurso");
+			result.redirectTo(UsuarioController.class).login();
+		}
+		Disciplina disciplina = disciplinas.pesquisarDisciplinaPorId(id);
+		result.include("disciplina", disciplina);
+	}
+	
+	
+	@Permission
+	@Get("/disciplina/pai/detalha/{id}")
+	public void detalhaDisciplinaFilho(long id) {
+		if((usuarioLogado.getUsuario() instanceof Pai) == false) {
 			result.include("error", "Você não tem permissão para acessar esse recurso");
 			result.redirectTo(UsuarioController.class).login();
 		}

@@ -38,8 +38,8 @@
 						<div class="card-body">
 							<form action="<c:url value="/usuario/login"/>" method="post">
 								<div class="form-group col-md-12">
-  									<label for="email">Email</label>
-  									<input type="email" class="form-control" id="email" name="email" placeholder="Email" required>
+  									<label for="email">CPF</label>
+  									<input type="text" class="form-control" id="email" name="email" placeholder="CPF" required>
 								</div>
 								<div class="form-group col-md-12">
   									<label for="senha">Senha</label>
@@ -49,9 +49,6 @@
 									<button type="submit" class="btn btn-primary btn-block">Acessar Sistema</button>
 								</div>
 							</form>
-							<div class="form-group col-md-12">
-								<a href="<c:url value="/usuario/pai/login"/>"><button class="btn btn-success btn-block">Pais ou Responsáveis</button></a>
-							</div>
 						</div>
 					</div>
 				</div>

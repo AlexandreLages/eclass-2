@@ -29,30 +29,41 @@
 			</div>
 		</div>
 		<div class="container">
-			<div class="row justify-content-md-center">
-				<div class="col-md-6">
-					<div class="card">
-						<div class="card-header">
-							<i class="fas fa-users"></i> Acessar o Sistema
-						</div>
-						<div class="card-body">
-							<form action="<c:url value="/usuario/login"/>" method="post">
-								<div class="form-group col-md-12">
-  									<label for="email">Email</label>
-  									<input type="email" class="form-control" id="email" name="email" placeholder="Email" required>
-								</div>
-								<div class="form-group col-md-12">
-  									<label for="senha">Senha</label>
-  									<input type="password" class="form-control" id="senha" name="senha" placeholder="Senha" required>
-								</div>
-								<div class="form-group col-md-12">
-									<button type="submit" class="btn btn-primary btn-block">Acessar Sistema</button>
-								</div>
-							</form>
-							<div class="form-group col-md-12">
-								<a href="<c:url value="/usuario/pai/login"/>"><button class="btn btn-success btn-block">Pais ou Responsáveis</button></a>
+			<div class="row">
+				<div class="col-md-4">
+					<ul class="list-group">
+  						<li class="list-group-item">
+  							<a href="<c:url value="/aluno/lista/pai/${usuarioLogado.usuario.id}"/>"><i class="fas fa-child"></i> Filhos</a>
+  						</li>
+  						<li class="list-group-item">
+  							<a href=""><i class="fas fa-user"></i> Meu Perfil</a>
+  						</li>
+  						<li class="list-group-item">
+  							<a href="<c:url value="/usuario/logout"/>"><i class="fas fa-sign-out-alt"></i> Sair</a>
+  						</li>
+					</ul>
+				</div>
+				<div class="col-md-8">
+					<div class="align-rigth">
+						<a href="<c:url value="/pai/relacionar/${usuarioLogado.usuario.id}"/>" class="btn btn-primary">Adicionar Filho</a>
+					</div>
+					<br>
+					<br>
+					<div class="row">
+						<c:forEach items="${filhos}" var="filho" varStatus="item">
+							<div class="col-md-6">
+								<div class="card center">
+		  							<div class="card-body">
+		    							<a href="<c:url value="/disciplina/lista/filho/${filho.id}"/>"><img width="30%" class="rounded-circle" src="<c:url value="/static/user-img.jpg"/>"></img></a>
+		    							<h5 class="card-title">${filho.nome}</h5>
+		    							<h6 class="card-subtitle">${filho.email}</h6>
+		  							</div>
+	  							</div>
+	  							<c:if test="${item.index mod 2 == 0}">
+	  								<br>
+	  							</c:if>
 							</div>
-						</div>
+						</c:forEach>
 					</div>
 				</div>
 			</div>

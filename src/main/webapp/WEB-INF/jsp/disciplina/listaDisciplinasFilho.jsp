@@ -29,29 +29,30 @@
 			</div>
 		</div>
 		<div class="container">
-			<div class="row justify-content-md-center">
-				<div class="col-md-6">
+			<div class="row">
+				<div class="col-md-4">
+					<ul class="list-group">
+  						<li class="list-group-item">
+  							<a href="<c:url value="/aluno/lista/pai/${usuarioLogado.usuario.id}"/>"><i class="fas fa-child"></i> Filhos</a>
+  						</li>
+  						<li class="list-group-item">
+  							<a href=""><i class="fas fa-user"></i> Meu Perfil</a>
+  						</li>
+  						<li class="list-group-item">
+  							<a href="<c:url value="/usuario/logout"/>"><i class="fas fa-sign-out-alt"></i> Sair</a>
+  						</li>
+					</ul>
+				</div>
+				<div class="col-md-8">
 					<div class="card">
 						<div class="card-header">
-							<i class="fas fa-users"></i> Acessar o Sistema
+							Disicplinas
 						</div>
 						<div class="card-body">
-							<form action="<c:url value="/usuario/login"/>" method="post">
-								<div class="form-group col-md-12">
-  									<label for="email">Email</label>
-  									<input type="email" class="form-control" id="email" name="email" placeholder="Email" required>
-								</div>
-								<div class="form-group col-md-12">
-  									<label for="senha">Senha</label>
-  									<input type="password" class="form-control" id="senha" name="senha" placeholder="Senha" required>
-								</div>
-								<div class="form-group col-md-12">
-									<button type="submit" class="btn btn-primary btn-block">Acessar Sistema</button>
-								</div>
-							</form>
-							<div class="form-group col-md-12">
-								<a href="<c:url value="/usuario/pai/login"/>"><button class="btn btn-success btn-block">Pais ou Responsáveis</button></a>
-							</div>
+							<c:forEach items="${disciplinas}" var="disciplina">
+								<a href="<c:url value="/disciplina/pai/detalha/${disciplina.id}"/>">${disciplina.nome} - ${disciplina.serie} ${disciplina.turma} ${disciplina.turno} - ${disciplina.escola}</a>
+								<hr>
+							</c:forEach>
 						</div>
 					</div>
 				</div>

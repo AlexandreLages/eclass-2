@@ -9,6 +9,7 @@ import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Result;
 import dao.UsuarioDAO;
 import model.Aluno;
+import model.Pai;
 import model.Professor;
 import model.Usuario;
 import session.UsuarioLogado;
@@ -43,6 +44,13 @@ public class UsuarioController {
 	
 	
 	@Public
+	@Get("/usuario/pai/login")
+	public void loginPai() {
+		
+	}
+	
+	
+	@Public
 	@Post("/usuario/login")
 	public void login(String email, String senha) {
 		Usuario logando = usuarios.pesquisarUsuarioPorEmailESenha(email, senha);
@@ -53,6 +61,9 @@ public class UsuarioController {
 			} else if(logando instanceof Aluno) {
 				usuarioLogado.login(logando);
 				result.redirectTo(AlunoController.class).principal();
+			} else if(logando instanceof Pai) {
+				usuarioLogado.login(logando);
+				result.redirectTo(PaiController.class).principal();
 			}
 		}
 	}

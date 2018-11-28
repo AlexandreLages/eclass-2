@@ -32,6 +32,15 @@ public class UsuarioDAO {
 			System.out.println("Erro ao tentar salvar usuário");
 		}
 	}
+	
+	
+	public void atualizarUsuario(Usuario usuario) {
+		try {
+			this.session.update(usuario);
+		} catch(Exception e) {
+			System.out.println("Erro ao tentar atualizar usuário");
+		}
+	}
 
 
 	public boolean pesquisarUsuarioPorEmail(Usuario usuario){
