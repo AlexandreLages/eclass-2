@@ -42,15 +42,15 @@ public class ProfessorController {
 	
 	@Public
 	@Post("/professor/cadastrar")
-	public void cadastrar(Professor professor, String confirmarSenha) {
+	public void cadastrar(final Professor professor, String confirmarSenha) {
 		if(usuarios.pesquisarUsuarioPorEmail(professor) == false && usuarios.pesquisarUsuarioPorUsuario(professor) == false) {
 			if(professor.getSenha().equals(confirmarSenha) == false) {
 				result.include("error", "As senhas não coincidem");
 				result.redirectTo(HomeController.class).home();
 			}
-			professor.setTipo("professor");
+			professor.setTipo("aluno");
 			usuarios.inserirUsuario(professor);
-			result.include("mensagem", "Conta criada com sucesso");
+			result.include("error", "Conta criada com sucesso");
 			result.redirectTo(HomeController.class).home();
 		} else {
 			result.include("error", "Já existe uma conta com esses dados");

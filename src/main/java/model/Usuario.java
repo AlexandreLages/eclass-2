@@ -44,7 +44,6 @@ public class Usuario implements Serializable {
 	private String tipo;
 	
 	
-	@NotNull
 	private String token;
 	
 
