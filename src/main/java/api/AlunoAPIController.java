@@ -45,6 +45,6 @@ public class AlunoAPIController {
 	@Get("/aluno/api/lista/pai/{id}")
 	public void listarAlunosPai(long id) {
 		Pai pai = (Pai) usuarios.pesquisarUsuarioPorId(id);
-		result.include("filhos", pai.getFilhos());
+		result.use(Results.json()).withoutRoot().from(pai.getFilhos()).serialize();
 	}
 }

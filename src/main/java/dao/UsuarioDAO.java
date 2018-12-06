@@ -1,10 +1,13 @@
 package dao;
+import java.util.ArrayList;
+
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 
 import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
 
+import model.Aluno;
 import model.Usuario;
 
 @RequestScoped
@@ -81,5 +84,13 @@ public class UsuarioDAO {
 				.add(Restrictions.eq("id", id))
 				.uniqueResult();
 		return u;
+	}
+	
+	
+	@SuppressWarnings("unchecked")
+	public ArrayList<Aluno> listarAlunos(){
+		return (ArrayList<Aluno>) this.session.createCriteria(Usuario.class)
+				.add(Restrictions.eq("tipo", "aluno"))
+				.list();
 	}
 }

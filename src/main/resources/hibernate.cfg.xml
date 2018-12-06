@@ -16,5 +16,6 @@
 		<mapping class="model.Aluno"/>
 		<mapping class="model.Disciplina"/>
 		<mapping class="model.Pai"/>
+		<mapping class="model.Mensagem"/>
 	</session-factory>
 </hibernate-configuration>

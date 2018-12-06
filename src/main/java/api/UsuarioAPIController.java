@@ -61,4 +61,15 @@ public class UsuarioAPIController {
 			result.use(Results.json()).withoutRoot().from(usuario).exclude("senha").serialize();
 		}
 	}
+	
+	
+	@Public
+	@Post("/usuario/api/token/alterar")
+	@Consumes({"application/json", "application/xml"})
+	public void token(String token, long id) {
+		Usuario usuario = usuarios.pesquisarUsuarioPorId(id);
+		usuario.setToken(token);
+		usuarios.atualizarUsuario(usuario);
+		result.use(Results.json()).withoutRoot().from(usuario).serialize();
+	}
 }

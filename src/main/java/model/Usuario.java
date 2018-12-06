@@ -43,6 +43,10 @@ public class Usuario implements Serializable {
 	@NotNull
 	private String tipo;
 	
+	
+	@NotNull
+	private String token;
+	
 
 	public Usuario(String nome, String usuario, String email, String senha, String tipo) {
 		this.nome = nome;
@@ -115,5 +119,15 @@ public class Usuario implements Serializable {
 
 	public void setTipo(String tipo) {
 		this.tipo = tipo;
+	}
+
+
+	public String getToken() {
+		return token;
+	}
+
+
+	public void setToken(String token) {
+		this.token = token;
 	}
 }

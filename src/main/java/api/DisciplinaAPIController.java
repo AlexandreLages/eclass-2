@@ -85,7 +85,7 @@ public class DisciplinaAPIController {
 	@Get("/disciplina/api/lista/filho/{id}")
 	public void listaDisciplinasFilho(long id) {
 		Aluno aluno = (Aluno) usuarioDAO.pesquisarUsuarioPorId(id);
-		result.include("disciplinas", aluno.getDisciplinas());
+		result.use(Results.json()).withoutRoot().from(aluno.getDisciplinas()).serialize();
 	}
 	
 	
@@ -93,6 +93,6 @@ public class DisciplinaAPIController {
 	@Get("/disciplina/api/pai/detalha/{id}")
 	public void detalhaDisciplinaFilho(long id) {
 		Disciplina disciplina = disciplinas.pesquisarDisciplinaPorId(id);
-		result.include("disciplina", disciplina);
+		result.use(Results.json()).withoutRoot().from(disciplina).serialize();
 	}
 }
