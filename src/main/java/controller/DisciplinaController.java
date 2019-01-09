@@ -57,8 +57,8 @@ public class DisciplinaController {
 		Professor professor = (Professor) usuarioDAO.pesquisarUsuarioPorId(id);
 		disciplina.setProfessor(professor);
 		disciplinas.inserirDisciplina(disciplina);
-		result.include("mensagem", "Disciplina adicionada com sucesso");
-		result.redirectTo(DisciplinaController.class).listaDisciplinasProfessor(id);;
+		result.include("success", "<strong>Sucesso!</strong> Disciplina adicionada com sucesso");
+		result.redirectTo(DisciplinaController.class).listaDisciplinasProfessor(id);
 	}
 	
 	
@@ -118,8 +118,8 @@ public class DisciplinaController {
 		alunos.add(aluno);
 		disciplina.setAlunos(alunos);
 		disciplinas.atualizarDisciplina(disciplina);
-		result.include("mensagem", "Aluno relacionado com sucesso");
-		result.redirectTo(ProfessorController.class).principal();
+		result.include("success", "<strong>Sucesso!</strong> Aluno adicionado à disciplina");
+		result.redirectTo(AlunoController.class).listarAlunoDisciplina(idDisciplina);
 	}
 	
 	
@@ -156,5 +156,28 @@ public class DisciplinaController {
 		}
 		Disciplina disciplina = disciplinas.pesquisarDisciplinaPorId(id);
 		result.include("disciplina", disciplina);
+	}
+	
+	
+	@Permission
+	@Get("/disciplina/configura/{id}")
+	public void configuraDisciplina(long id) {
+		if((usuarioLogado.getUsuario() instanceof Professor) == false) {
+			result.include("error", "Você não tem permissão para acessar esse recurso");
+			result.redirectTo(UsuarioController.class).login();
+		}
+		Disciplina disciplina = disciplinas.pesquisarDisciplinaPorId(id);
+		result.include("disciplina", disciplina);
+	}
+	
+	
+	@Permission
+	@Post("/disciplina/configura")
+	public void configuraDisciplina(long idDisciplina, int alunosRanking, double media) {
+		Disciplina disciplina = disciplinas.pesquisarDisciplinaPorId(idDisciplina);
+		disciplina.setAlunosRanking(alunosRanking);
+		disciplina.setMedia(media);
+		disciplinas.atualizarDisciplina(disciplina);
+		result.redirectTo(DisciplinaController.class).detalhaDisciplinaProfessor(idDisciplina);
 	}
 }

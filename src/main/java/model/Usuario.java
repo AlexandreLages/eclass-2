@@ -46,6 +46,9 @@ public class Usuario implements Serializable {
 	
 	private String token;
 	
+	
+	private int quantidadeLogin;
+	
 
 	public Usuario(String nome, String usuario, String email, String senha, String tipo) {
 		this.nome = nome;
@@ -128,5 +131,15 @@ public class Usuario implements Serializable {
 
 	public void setToken(String token) {
 		this.token = token;
+	}
+
+
+	public int getQuantidadeLogin() {
+		return quantidadeLogin;
+	}
+
+
+	public void setQuantidadeLogin(int quantidadeLogin) {
+		this.quantidadeLogin = quantidadeLogin;
 	}
 }

@@ -4,7 +4,9 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -12,6 +14,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 
 @Entity
@@ -48,6 +51,15 @@ public class Disciplina implements Serializable {
 	private String serie;
 	
 	
+	private Double media;
+	
+	
+	private int alunosRanking;
+	
+	
+	private Double notaMaxima;
+	
+	
 	@ManyToOne
 	@JoinColumn(name = "id_professor")
 	private Professor professor;
@@ -56,6 +68,10 @@ public class Disciplina implements Serializable {
 	@ManyToMany
 	@JoinTable(name="disciplinas_alunos", joinColumns= {@JoinColumn(name="disciplina_id")}, inverseJoinColumns= {@JoinColumn(name="aluno_id")})
 	private List<Aluno> alunos = new ArrayList<>();
+	
+	
+	@OneToMany(mappedBy = "disciplina", targetEntity = Prova.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private List<Prova> provas;
 
 
 	public Disciplina(long id, String nome, String escola, String turma, String turno, String serie,
@@ -154,5 +170,45 @@ public class Disciplina implements Serializable {
 
 	public void setAlunos(List<Aluno> alunos) {
 		this.alunos = alunos;
+	}
+
+
+	public Double getMedia() {
+		return media;
+	}
+
+
+	public void setMedia(Double media) {
+		this.media = media;
+	}
+
+
+	public int getAlunosRanking() {
+		return alunosRanking;
+	}
+
+
+	public void setAlunosRanking(int alunosRanking) {
+		this.alunosRanking = alunosRanking;
+	}
+
+
+	public Double getNotaMaxima() {
+		return notaMaxima;
+	}
+
+
+	public void setNotaMaxima(Double notaMaxima) {
+		this.notaMaxima = notaMaxima;
+	}
+
+
+	public List<Prova> getProvas() {
+		return provas;
+	}
+
+
+	public void setProvas(List<Prova> provas) {
+		this.provas = provas;
 	}
 }

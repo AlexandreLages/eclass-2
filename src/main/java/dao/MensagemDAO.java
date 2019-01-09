@@ -19,4 +19,13 @@ public class MensagemDAO {
 		return this.session.createCriteria(Mensagem.class)
 				.list();
 	}
+	
+	
+	public void inserirMensagem(Mensagem mensagem) {
+		try {
+			this.session.save(mensagem);
+		} catch (Exception e) {
+			System.out.println("Erro ao tentar salvar mensagem: " + e.getStackTrace());
+		}
+	}
 }

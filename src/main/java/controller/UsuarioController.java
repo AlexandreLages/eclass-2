@@ -60,6 +60,10 @@ public class UsuarioController {
 				result.redirectTo(ProfessorController.class).principal();
 			} else if(logando instanceof Aluno) {
 				usuarioLogado.login(logando);
+				Usuario usuario = usuarios.pesquisarUsuarioPorEmail(email);
+				int logins = usuario.getQuantidadeLogin() + 1;
+				usuario.setQuantidadeLogin(logins);
+				usuarios.atualizarUsuario(usuario);
 				result.redirectTo(AlunoController.class).principal();
 			} else if(logando instanceof Pai) {
 				usuarioLogado.login(logando);

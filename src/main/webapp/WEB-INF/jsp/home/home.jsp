@@ -30,6 +30,16 @@
 		</div>
 		<div class="container">
 			<div class="row">
+				<c:if test="${success != null}">
+					<div class="col-md-12 alert alert-success" role="alert">
+  						${success}
+					</div>
+				</c:if>
+				<c:if test="${error != null}">
+					<div class="col-md-12 alert alert-danger" role="alert">
+  						${error}
+					</div>
+				</c:if>
 				<div class="jumbotron">
 					<h2>E-Class</h2>
 					<p>Bem-vindo ao E-Class, esse é um projeto que procura aliar gamificação à educação com objetivo de melhorar o desempenho de alunos da educação básica.</p>

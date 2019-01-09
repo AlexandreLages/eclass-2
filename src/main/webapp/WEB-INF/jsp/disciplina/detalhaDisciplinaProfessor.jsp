@@ -44,12 +44,16 @@
 					</ul>
 				</div>
 				<div class="col-md-8">
+					<div class="pull-right">
+						<a href="<c:url value="/disciplina/lista/professor/${usuarioLogado.usuario.id}"/>" class="btn btn-warning">Voltar</a>
+					</div>
+					<br>
 					<div class="card">
 						<div class="card-header">
-							Matemática
+							${disciplina.nome}
 						</div>
 						<div class="card-body">
-							${disciplina.serie} Turma ${disciplina.turma} Turno ${disciplina.turno} 2018.
+							${disciplina.escola } - ${disciplina.serie} Turma ${disciplina.turma} Turno ${disciplina.turno} 2018.
 						</div>
 					</div>
 					<br>
@@ -73,8 +77,8 @@
 						<div class="col-md-4">
 							<div class="card center">
 		  						<div class="card-body">
-		    						<h5 class="card-title">Notas</h5>
-		    						<i class="fas fa-chart-line fa-5x font-primary"></i>
+		    						<h5 class="card-title">Provas</h5>
+		    						<a href="<c:url value="/prova/lista/disciplina/${disciplina.id}"/>"><i class="fas fa-file fa-5x font-primary"></i></a>
 		  						</div>
 	  						</div>
 						</div>
@@ -93,7 +97,7 @@
 							<div class="card center">
 		  						<div class="card-body">
 		    						<h5 class="card-title">Configurações</h5>
-		    						<i class="fas fa-cog fa-5x font-primary"></i>
+		    						<a href="<c:url value="/disciplina/configura/${disciplina.id}"/>"><i class="fas fa-cog fa-5x font-primary"></i></a>
 		  						</div>
 	  						</div>
 						</div>

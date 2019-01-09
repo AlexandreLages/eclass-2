@@ -44,10 +44,21 @@
 					</ul>
 				</div>
 				<div class="col-md-8">
-					<div class="align-rigth">
+					<div class="pull-right">
 						<a href="<c:url value="/disciplina/cadastrar"/>" class="btn btn-primary">Nova Disciplina</a>
+						<a href="<c:url value="/professor/principal"/>" class="btn btn-warning">Voltar</a>
 					</div>
 					<br>
+					<c:if test="${success != null}">
+						<div class="col-md-12 alert alert-success" role="alert">
+	  						${success}
+						</div>
+					</c:if>
+					<c:if test="${error != null}">
+						<div class="col-md-12 alert alert-danger" role="alert">
+	  						${error}
+						</div>
+					</c:if>
 					<div class="card">
 						<div class="card-header">
 							Disicplinas

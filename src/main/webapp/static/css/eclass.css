@@ -29,3 +29,12 @@
 .margin-eclass {
 	margin-bottom: 16px;
 }
+
+
+.vertical-align {
+	vertical-align: center;
+}
+
+.span-xp {
+	min-width: 100%;
+}

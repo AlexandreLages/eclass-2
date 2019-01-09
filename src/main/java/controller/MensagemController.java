@@ -26,6 +26,30 @@ public class MensagemController {
 	
 	
 	@Public
+	@Get("/mensagem/cadastrar")
+	public void cadastrarMensagens() {
+		List<Mensagem> listaMensagens = new ArrayList<>();
+		
+		//Alert
+		listaMensagens.add(new Mensagem("Dê uma olhada em suas novas conquistas?", "alerta"));
+		listaMensagens.add(new Mensagem("Você já deu olhada em suas conquistas? Veja se você não possui novas.", "alerta"));
+		
+		//Nota Máxima
+		listaMensagens.add(new Mensagem("Parabéns, você conseguiu atingir a nota máxima. Continue assim!!!", "nota_maxima"));
+		
+		//Maior Nota
+		listaMensagens.add(new Mensagem("Você foi o campeão da rodada, tirou a maior nota da prova!!!", "maior_nota"));
+		
+		//Incentivo
+		listaMensagens.add(new Mensagem("E aí, Vamos ser campeões da rodada? Dispare nas conquistas", "incentivo"));
+		
+		for(Mensagem m : listaMensagens) {
+			mensagemDAO.inserirMensagem(m);
+		}
+	}
+	
+	
+	@Public
 	@Get("/mensagem/lista")
 	public void listarTodas() {
 		List<Mensagem> mensagens = mensagemDAO.listarTodas();
@@ -38,6 +62,7 @@ public class MensagemController {
 	public void enviarMensagens() {
 		ArrayList<Aluno> alunos = usuarioDAO.listarAlunos();
 		ArrayList<Mensagem> mensagens = (ArrayList<Mensagem>) mensagemDAO.listarTodas();
+		System.out.println("Entrou aqui");
 		int faixa = (int) mensagemDAO.listarTodas().size();
 		for(Aluno a : alunos) {
 			Random gerador = new Random();
@@ -45,6 +70,7 @@ public class MensagemController {
 			String mensagem = mensagens.get(numeroMensagem).getMensagem();
 			
 			if(a.getToken() != null && mensagem != null) {
+				System.out.println("Aluno: " + a.getNome() + "/Mensagem: " + mensagem);
 				NotificacaoUtil.montarNotificacao(a.getToken(), mensagem);
 			}
 		}

@@ -44,12 +44,16 @@
 					</ul>
 				</div>
 				<div class="col-md-8">
+					<div class="pull-right">
+						<a href="<c:url value="/disciplina/lista/aluno/${usuarioLogado.usuario.id}"/>" class="btn btn-warning">Voltar</a>
+					</div>
+					<br>
 					<div class="card">
 						<div class="card-header">
-							Matemática
+							${disciplina.nome}
 						</div>
 						<div class="card-body">
-							${disciplina.serie} Turma ${disciplina.turma} Turno ${disciplina.turno} 2018.
+							${disciplina.serie} - Turma: "${disciplina.turma}" - Turno: "${disciplina.turno}".
 						</div>
 					</div>
 					<br>
@@ -66,15 +70,15 @@
 							<div class="card center">
 		  						<div class="card-body">
 		    						<h5 class="card-title">Ranking</h5>
-		    						<i class="fas fa-trophy fa-5x font-primary"></i>
+		    						<a href="<c:url value="/gamificacao/ranking/disciplina/${disciplina.id}"/>"><i class="fas fa-trophy fa-5x font-primary"></i></a>
 		  						</div>
 	  						</div>
 						</div>
 						<div class="col-md-4">
 							<div class="card center">
 		  						<div class="card-body">
-		    						<h5 class="card-title">Notas</h5>
-		    						<i class="fas fa-chart-line fa-5x font-primary"></i>
+		    						<h5 class="card-title">Conquistas</h5>
+		    						<i class="fas fa-certificate fa-5x font-primary"></i>
 		  						</div>
 	  						</div>
 						</div>
@@ -92,8 +96,8 @@
 						<div class="col-md-4">
 							<div class="card center">
 		  						<div class="card-body">
-		    						<h5 class="card-title">Configurações</h5>
-		    						<i class="fas fa-cog fa-5x font-primary"></i>
+		    						<h5 class="card-title">Notas</h5>
+		    						<i class="fas fa-chart-line fa-5x font-primary"></i>
 		  						</div>
 	  						</div>
 						</div>

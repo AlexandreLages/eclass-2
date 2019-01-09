@@ -51,15 +51,15 @@ public class AlunoController {
 	public void cadastrar(Aluno aluno, String confirmarSenha) {
 		if(usuarios.pesquisarUsuarioPorEmail(aluno) == false && usuarios.pesquisarUsuarioPorUsuario(aluno) == false) {
 			if(aluno.getSenha().equals(confirmarSenha) == false) {
-				result.include("error", "As senhas não coincidem");
+				result.include("error", "<strong>Erro!</strong> As senhas não coincidem");
 				result.redirectTo(HomeController.class).home();
 			}
 			aluno.setTipo("aluno");
 			usuarios.inserirUsuario(aluno);
-			result.include("error", "Conta criada com sucesso");
+			result.include("success", "<strong>Sucesso!</strong> Conta criada com sucesso");
 			result.redirectTo(HomeController.class).home();
 		} else {
-			result.include("error", "Já existe uma conta com esses dados");
+			result.include("error", "<strong>Erro!</strong> Já existe uma conta com esses dados");
 			result.redirectTo(HomeController.class).home();
 		}
 	}

@@ -46,14 +46,25 @@
 				<div class="col-md-8">
 					<div class="align-rigth">
 						<a href="<c:url value="/disciplina/relacionar/${disciplina.id}"/>" class="btn btn-primary">Adicionar Aluno</a>
+						<a href="<c:url value="/disciplina/professor/detalha/${disciplina.id}"/>" class="btn btn-warning">Voltar</a>
 					</div>
 					<br>
+					<c:if test="${success != null}">
+						<div class="col-md-12 alert alert-success" role="alert">
+	  						${success}
+						</div>
+					</c:if>
+					<c:if test="${error != null}">
+						<div class="col-md-12 alert alert-danger" role="alert">
+	  						${error}
+						</div>
+					</c:if>
 					<div class="card">
 						<div class="card-header">
 							${disciplina.nome}
 						</div>
 						<div class="card-body">
-							${disciplina.serie} Turma ${disciplina.turma} Turno ${disciplina.turno}
+							${disciplina.escola} - ${disciplina.serie} Turma ${disciplina.turma} Turno ${disciplina.turno}
 						</div>
 					</div>
 					<br>

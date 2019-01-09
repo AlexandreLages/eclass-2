@@ -27,8 +27,8 @@ public class MensagemUtil {
 						Random gerador = new Random();
 						int numeroMensagem = gerador.nextInt(faixa);
 						String mensagem = mensagens.get(numeroMensagem).getMensagem();
-						System.out.println("Aluno: " + a.getNome() + "/Mensagem: " + mensagem);
 						if(a.getToken() != null && mensagem != null) {
+							System.out.println("Aluno: " + a.getNome() + "/Mensagem: " + mensagem);
 							NotificacaoUtil.montarNotificacao(a.getToken(), mensagem);
 						}
 					}

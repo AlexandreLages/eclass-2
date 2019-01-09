@@ -44,6 +44,10 @@
 					</ul>
 				</div>
 				<div class="col-md-8">
+					<div class="pull-right">
+						<a href="<c:url value="/disciplina/lista/professor/${usuarioLogado.usuario.id}"/>" class="btn btn-warning">Voltar</a>
+					</div>
+					<br>
 					<div class="card">
 						<div class="card-header">
 							Cadastrar Disciplina

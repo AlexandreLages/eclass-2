@@ -44,6 +44,10 @@
 					</ul>
 				</div>
 				<div class="col-md-8">
+					<div class="pull-right">
+						<a href="<c:url value="/aluno/lista/disciplina/${idDisciplina}"/>" class="btn btn-warning">Voltar</a>
+					</div>
+					<br>
 					<div class="card">
 						<div class="card-header">
 							Adicionar Aluno

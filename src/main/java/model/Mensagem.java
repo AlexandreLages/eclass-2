@@ -26,9 +26,20 @@ public class Mensagem implements Serializable {
 	private String mensagem;
 	
 	
-	public Mensagem(long id, String mensagem) {
+	@NotNull
+	private String tipo;
+	
+	
+	public Mensagem(long id, String mensagem, String tipo) {
 		this.id = id;
 		this.mensagem = mensagem;
+		this.tipo = tipo;
+	}
+	
+	
+	public Mensagem(String mensagem, String tipo) {
+		this.mensagem = mensagem;
+		this.tipo = tipo;
 	}
 	
 	
@@ -54,5 +65,15 @@ public class Mensagem implements Serializable {
 
 	public void setMensagem(String mensagem) {
 		this.mensagem = mensagem;
+	}
+
+
+	public String getTipo() {
+		return tipo;
+	}
+
+
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
 	}
 }
